@@ -12,4 +12,4 @@ jobs:
       - name: Confere a versão do ubuntu
         run: cat /etc/os-release
       - name: Exibir mensagem
-        run: "giropops strigus girus"
+        run: echo "giropops strigus girus"
