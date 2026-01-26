@@ -1,0 +1,15 @@
+name: Primeiro Workflow
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  giropops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere a versão do ubuntu
+        run: cat /etc/os-release
+      - name: Exibir mensagem
+        run: "giropops strigus girus"
