@@ -1,0 +1,19 @@
+name: Trabalho entre steps
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  giropops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere a versão do ubuntu
+        run: cat /etc/os-release
+      - name: Exibir mensagem
+        run: echo "giropops strigus girus" > mensagem.txt
+      - name: Qualquer outra coisa
+        run: ls -lha
+      - name: Ler conteudo do arquivo
+        run: cat mensagem.txt
