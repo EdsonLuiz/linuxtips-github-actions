@@ -11,10 +11,20 @@ jobs:
         run: cat /etc/os-release
       - name: Exibir mensagem
         run: echo "giropops strigus girus" > mensagem.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: strigus
+          path: mensagem.txt
   job_2:
     runs-on: ubuntu-latest
     steps:
       - name: Verifica conteudo do dir
         run: ls -lha
+      - uses: actions/download-artifact@v4
+        with:
+          name: strigus
+          path: mensagem.txt
+      - name: Verifica conteudo do dir
+        run: ls -lha ./strigus
       - name: Acessa arquivo mensagem.txt
-        run: cat mensagem.txt
+        run: cat ./strigus/mensagem.txt
