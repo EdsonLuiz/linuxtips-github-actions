@@ -15,7 +15,7 @@ jobs:
   pull_and_inspect_image:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkou
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: pull image ${{inputs.image_name}}:${{inputs.image_tag}}
