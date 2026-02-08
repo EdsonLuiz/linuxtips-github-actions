@@ -1,0 +1,28 @@
+name: desafio_01
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_name:
+        required: true
+        type: string
+      image_tag:
+        required: true
+        type: string
+
+jobs:
+  pull_and_inspect_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull image ${{inputs.image_name}}:${{inputs.image_tag}}
+        run: docker image pull ${{inputs.image_name}}:${{inputs.image_tag}}
+      - name: show images
+        run: docker image ls
+
+      - name: Docker Scout
+        uses: docker/scout-action@v1
+        with:
+          command: cves
+          image: ${{inputs.image_name}}:${{inputs.image_tag}}
+          write-comment: true
+          github-token: ${{ secrets.GITHUB_TOKEN }} # to be able to write the comment
